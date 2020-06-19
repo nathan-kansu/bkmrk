@@ -1,22 +1,45 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useEffect, useState } from "react"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+import Card from "../components/card"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+const IndexPage = () => {
+  const [bookmarks, setBookmarks] = useState([])
+
+  useEffect(() => {
+    window.chrome.runtime.sendMessage(
+      process.env.CHROME_EXTENSION_ID,
+      {},
+      ({ data }) => {
+        setBookmarks(data)
+      }
+    )
+  }, [])
+
+  if (!bookmarks.length) {
+    return (
+      <Layout>
+        <SEO title="Home" />
+        <div>Loading...</div>
+      </Layout>
+    )
+  }
+
+  const currentBookmarks = bookmarks
+    .filter(bookmark => bookmark.children === undefined)
+    .slice(0, 1)
+
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <div>
+        {currentBookmarks.map(bookmark => (
+          <Card key={bookmark.id} {...bookmark} />
+        ))}
+      </div>
+    </Layout>
+  )
+}
 
 export default IndexPage
