@@ -1,8 +1,15 @@
+import React from "react"
 import styled from "styled-components"
+import Container from "./Container"
 
-const Main = styled.main`
+const MainStyled = styled.main`
   margin: 0 auto;
-  max-width: 1024px;
 `
+
+const Main = ({ children }) => (
+  <MainStyled>
+    <Container>{children}</Container>
+  </MainStyled>
+)
 
 export default Main

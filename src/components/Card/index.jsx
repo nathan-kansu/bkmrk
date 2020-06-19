@@ -8,12 +8,17 @@ import Description from "./Description"
 const Container = styled.div`
   display: flex;
   min-height: 50vh;
+  margin-bottom: 50px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 `
 
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 50px;
+  padding-left: 30px;
 `
 
 const Card = ({ url }) => {
@@ -34,12 +39,12 @@ const Card = ({ url }) => {
         },
       })
       .then(({ data }) => {
-        const { ogDescription, ogImage, ogTitle } = data
+        //const { ogDescription, ogImage, ogTitle } = data
 
         setMetadata({
-          description: ogDescription,
-          image: ogImage,
-          title: ogTitle,
+          description: data.ogDescription || "lorem",
+          image: data.ogImage || { url: "http://www.fillmurray.com/g/300/300" },
+          title: data.ogTitle || "No title",
         })
       })
       .catch(() => {

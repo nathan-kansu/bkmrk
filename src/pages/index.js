@@ -28,7 +28,7 @@ const IndexPage = () => {
 
   const currentBookmarks = bookmarks
     .filter(bookmark => bookmark.children === undefined)
-    .slice(0, 2)
+    .slice(0, 5)
 
   return (
     <Layout>
