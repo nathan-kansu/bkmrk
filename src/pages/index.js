@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 
 import Layout from "../components/layout"
-import Card from "../components/card"
+import Card from "../components/Card"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -28,7 +28,7 @@ const IndexPage = () => {
 
   const currentBookmarks = bookmarks
     .filter(bookmark => bookmark.children === undefined)
-    .slice(0, 1)
+    .slice(0, 2)
 
   return (
     <Layout>

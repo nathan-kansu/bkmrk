@@ -1,5 +1,20 @@
+import styled from "styled-components"
 import React, { useEffect, useState } from "react"
 import axios from "axios"
+import Image from "./Image"
+import Heading from "./Heading"
+import Description from "./Description"
+
+const Container = styled.div`
+  display: flex;
+  min-height: 50vh;
+`
+
+const Inner = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: 50px;
+`
 
 const Card = ({ url }) => {
   const [metadata, setMetadata] = useState({
@@ -40,11 +55,15 @@ const Card = ({ url }) => {
   }
 
   return (
-    <div>
-      <img alt="" src={image.url} />
-      <h2>{title}</h2>
-      <p>{description}</p>
-    </div>
+    <Container>
+      <Image alt="" src={image.url} />
+      <Inner>
+        <Heading>{title}</Heading>
+        <Description>
+          <p>{description}</p>
+        </Description>
+      </Inner>
+    </Container>
   )
 }
 
