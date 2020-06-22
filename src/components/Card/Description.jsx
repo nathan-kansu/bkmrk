@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 const Description = styled.div`
-  color: red;
+  flex-wrap: wrap;
 `
 
 export default Description

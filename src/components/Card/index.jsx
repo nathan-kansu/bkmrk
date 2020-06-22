@@ -5,10 +5,14 @@ import Image from "./Image"
 import Heading from "./Heading"
 import Description from "./Description"
 
-const Container = styled.div`
+const Container = styled.a`
+  background: #111;
   display: flex;
-  min-height: 50vh;
-  margin-bottom: 50px;
+  flex-direction: column;
+  text-decoration: none;
+  justify-content: center;
+  margin-bottom: 10px;
+  /* min-height: 50vh; */
 
   &:last-child {
     margin-bottom: 0;
@@ -18,55 +22,56 @@ const Container = styled.div`
 const Inner = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: 30px;
+  width: 100%;
+  padding: 15px;
 `
 
-const Card = ({ url }) => {
+const Card = ({ title: metaTitle, url }) => {
   const [metadata, setMetadata] = useState({
     description: "",
-    image: "",
-    title: "",
+    image: "http://www.fillmurray.com/g/300/300",
+    title: metaTitle,
   })
 
-  useEffect(() => {
-    axios
-      .get(process.env.SCRAPER_URI, {
-        params: {
-          url,
-        },
-        headers: {
-          "x-api-key": process.env.SCRAPER_API_KEY,
-        },
-      })
-      .then(({ data }) => {
-        //const { ogDescription, ogImage, ogTitle } = data
+  //   useEffect(() => {
+  //     axios
+  //       .get(process.env.SCRAPER_URI, {
+  //         params: {
+  //           url,
+  //         },
+  //         headers: {
+  //           "x-api-key": process.env.SCRAPER_API_KEY,
+  //         },
+  //       })
+  //       .then(({ data }) => {
+  //         //const { ogDescription, ogImage, ogTitle } = data
 
-        setMetadata({
-          description: data.ogDescription || "lorem",
-          image: data.ogImage || { url: "http://www.fillmurray.com/g/300/300" },
-          title: data.ogTitle || "No title",
-        })
-      })
-      .catch(() => {
-        //
-      })
-  }, [url])
+  //         setMetadata({
+  //           description: data?.ogDescription || metadata.description,
+  //           image: data?.ogImage || metadata.image,
+  //           title: data?.ogTitle || metadata.title,
+  //         })
+  //       })
+  //       .catch(err => {
+  //         console.log(err)
+  //       })
+  //   }, [metadata, url])
 
   const { image, title, description } = metadata
   const showCard = image && title && description
 
-  if (!showCard) {
-    return <div>loading</div>
-  }
+  //   if (!showCard) {
+  //     return <div>loading</div>
+  //   }
 
   return (
-    <Container>
+    <Container href={url} target="_blank">
       <Image alt="" src={image.url} />
       <Inner>
         <Heading>{title}</Heading>
-        <Description>
+        {/* <Description>
           <p>{description}</p>
-        </Description>
+        </Description> */}
       </Inner>
     </Container>
   )

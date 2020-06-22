@@ -3,7 +3,7 @@ import styled from "styled-components"
 import Container from "./Container"
 
 const MainStyled = styled.main`
-  margin: 0 auto;
+  margin: 25px auto 0;
 `
 
 const Main = ({ children }) => (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 
 import Layout from "../components/layout"
 import Card from "../components/Card"
+import Grid from "../components/Grid"
 import SEO from "../components/seo"
 
 const IndexPage = () => {
@@ -12,7 +13,11 @@ const IndexPage = () => {
       process.env.CHROME_EXTENSION_ID,
       {},
       ({ data }) => {
-        setBookmarks(data)
+        const bookmarks = data
+          .filter(bookmark => bookmark.children === undefined)
+          .sort((a, b) => b.dateAdded - a.dateAdded)
+
+        setBookmarks(bookmarks)
       }
     )
   }, [])
@@ -27,17 +32,17 @@ const IndexPage = () => {
   }
 
   const currentBookmarks = bookmarks
-    .filter(bookmark => bookmark.children === undefined)
-    .slice(0, 5)
+  // .filter(bookmark => bookmark.children === undefined)
+  // .slice(0, 5)
 
   return (
     <Layout>
       <SEO title="Home" />
-      <div>
+      <Grid>
         {currentBookmarks.map(bookmark => (
           <Card key={bookmark.id} {...bookmark} />
         ))}
-      </div>
+      </Grid>
     </Layout>
   )
 }
