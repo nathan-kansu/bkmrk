@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 const Image = styled.img`
-  /* max-width: 25vw; */
+  object-fit: cover;
+  filter: grayscale(1);
   margin: 0;
 `
 

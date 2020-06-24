@@ -1,17 +1,18 @@
 import styled from "styled-components"
-import React, { useEffect, useState } from "react"
-import axios from "axios"
+import React, { useState } from "react"
 import Image from "./Image"
 import Heading from "./Heading"
-import Description from "./Description"
 
 const Container = styled.div`
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 18px 1fr;
+  grid-column-gap: 18px;
   margin-bottom: 10px;
+  /* flex-direction: column; */
+  /* text-decoration: none;
+  justify-content: center;
+
   /* min-height: 50vh; */
 
   &:last-child {
@@ -19,12 +20,12 @@ const Container = styled.div`
   }
 `
 
-const Inner = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 15px;
-`
+// const Inner = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   padding: 15px;
+// `
 
 const Card = ({ handleDelete, id, title: metaTitle, url }) => {
   const [metadata, setMetadata] = useState({
@@ -58,22 +59,21 @@ const Card = ({ handleDelete, id, title: metaTitle, url }) => {
   //   }, [metadata, url])
 
   const { image, title, description } = metadata
-  const showCard = image && title && description
+  //   const showCard = image && title && description
 
   //   if (!showCard) {
   //     return <div>loading</div>
   //   }
 
+  const getUrlDomainName = url => {
+    const matches = url.match(/https:\/\/([a-z.]+)/)
+    return (matches && matches[0]) || "nooooo"
+  }
+
   return (
     <Container href={url} target="_blank">
-      <Image alt="" src={image.url} />
-      <Inner>
-        <Heading>{title}</Heading>
-        <button onClick={() => handleDelete(id)}>delete</button>
-        {/* <Description>
-          <p>{description}</p>
-        </Description> */}
-      </Inner>
+      <Image alt="" src={`${getUrlDomainName(url)}/favicon.ico`} />
+      <Heading>{title}</Heading>
     </Container>
   )
 }
