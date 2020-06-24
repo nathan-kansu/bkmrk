@@ -11,7 +11,7 @@ const IndexPage = () => {
   useEffect(() => {
     window.chrome.runtime.sendMessage(
       process.env.CHROME_EXTENSION_ID,
-      {},
+      { action: "bookmarks:get" },
       ({ data }) => {
         const bookmarks = data
           .filter(bookmark => bookmark.children === undefined)
@@ -21,6 +21,17 @@ const IndexPage = () => {
       }
     )
   }, [])
+
+  const handleDelete = id => {
+    window.chrome.runtime.sendMessage(
+      process.env.CHROME_EXTENSION_ID,
+      { action: "bookmarks:delete", id },
+      ({ data }) => {
+        const { id } = data
+        setBookmarks(bookmarks.filter(bookmark => bookmark.id !== id))
+      }
+    )
+  }
 
   if (!bookmarks.length) {
     return (
@@ -32,15 +43,13 @@ const IndexPage = () => {
   }
 
   const currentBookmarks = bookmarks
-  // .filter(bookmark => bookmark.children === undefined)
-  // .slice(0, 5)
 
   return (
     <Layout>
       <SEO title="Home" />
       <Grid>
         {currentBookmarks.map(bookmark => (
-          <Card key={bookmark.id} {...bookmark} />
+          <Card handleDelete={handleDelete} key={bookmark.id} {...bookmark} />
         ))}
       </Grid>
     </Layout>

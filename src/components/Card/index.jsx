@@ -5,7 +5,7 @@ import Image from "./Image"
 import Heading from "./Heading"
 import Description from "./Description"
 
-const Container = styled.a`
+const Container = styled.div`
   background: #111;
   display: flex;
   flex-direction: column;
@@ -26,7 +26,7 @@ const Inner = styled.div`
   padding: 15px;
 `
 
-const Card = ({ title: metaTitle, url }) => {
+const Card = ({ handleDelete, id, title: metaTitle, url }) => {
   const [metadata, setMetadata] = useState({
     description: "",
     image: "http://www.fillmurray.com/g/300/300",
@@ -69,6 +69,7 @@ const Card = ({ title: metaTitle, url }) => {
       <Image alt="" src={image.url} />
       <Inner>
         <Heading>{title}</Heading>
+        <button onClick={() => handleDelete(id)}>delete</button>
         {/* <Description>
           <p>{description}</p>
         </Description> */}
