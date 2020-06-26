@@ -6,7 +6,7 @@ const Heading = styled.div`
   font-size: 18px;
   font-weight: 600;
   letter-spacing: 1.05px;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
