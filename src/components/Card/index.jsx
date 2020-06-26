@@ -3,16 +3,23 @@ import React, { useState } from "react"
 import Image from "./Image"
 import Heading from "./Heading"
 
+const ImageWrapper = styled.div`
+  margin-right: 16px;
+  width: 32px;
+`
+
 const Container = styled.a`
   align-items: center;
-  display: grid;
-  grid-template-columns: 48px 1fr;
+  display: flex;
+  text-decoration: none;
+  /* grid-template-columns: 32px 1fr;
   grid-column-gap: 18px;
-  grid-row-gap: 30px;
+  grid-row-gap: 30px; */
   /* margin-bottom: 10px; */
-  /* flex-direction: column; */
-  /* text-decoration: none;
-  justify-content: center;
+  /* flex-direction: column;
+  justify-content: flex-start; */
+  /*
+
 
   /* min-height: 50vh; */
 
@@ -73,7 +80,9 @@ const Card = ({ handleDelete, id, title: metaTitle, url }) => {
 
   return (
     <Container href={url} target="_blank">
-      <Image alt="" src={`${getUrlDomainName(url)}/apple-touch-icon.png`} />
+      {/* <ImageWrapper>
+        <Image alt="" src={`${getUrlDomainName(url)}/apple-touch-icon.png`} />
+      </ImageWrapper> */}
       <Heading>{title}</Heading>
     </Container>
   )
