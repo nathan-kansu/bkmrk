@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background: radial-gradient(circle, rgba(34,34,34,1) 0%, rgba(17,17,17,1) 100%);
+    background: linear-gradient(rgb(32, 47, 60), rgb(255, 0, 0)) no-repeat;
       font-family: 'Noto Sans JP';
       color: #fff;
   }

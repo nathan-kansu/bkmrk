@@ -1,14 +1,15 @@
 import styled from "styled-components"
 
 const Grid = styled.div`
-  display: inline-grid;
+  /* display: inline-grid;
   grid-template-columns: 1fr;
-  grid-row-gap: 25px;
+  grid-row-gap: 25px; */
 
-  /* align-items: flex-start;
+  align-items: flex-start;
   display: flex;
   flex-direction: column;
-  grid-row-gap: 10px; */
+
+  /* grid-row-gap: 10px; */
   /* grid-column-gap: 5px;
 
   grid-template-columns: 1fr; */

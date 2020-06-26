@@ -10,6 +10,10 @@ module.exports = {
       options: {
         fonts: [
           {
+            family: `Roboto`,
+            variants: [`400`, `700`],
+          },
+          {
             family: `Noto Sans JP`,
             variants: [`400`, `700`],
           },

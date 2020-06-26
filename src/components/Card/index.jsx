@@ -2,6 +2,7 @@ import styled from "styled-components"
 import React, { useState } from "react"
 import Image from "./Image"
 import Heading from "./Heading"
+import SubHeading from "./SubHeading"
 
 const ImageWrapper = styled.div`
   margin-right: 16px;
@@ -9,8 +10,12 @@ const ImageWrapper = styled.div`
 `
 
 const Container = styled.a`
-  align-items: center;
+  background: #111;
+  /* align-items: flex; */
   display: flex;
+  flex-direction: column;
+  margin-bottom: 25px;
+  padding: 15px;
   text-decoration: none;
   /* grid-template-columns: 32px 1fr;
   grid-column-gap: 18px;
@@ -75,7 +80,7 @@ const Card = ({ handleDelete, id, title: metaTitle, url }) => {
 
   const getUrlDomainName = url => {
     const matches = url.match(/https:\/\/([a-z.]+)/)
-    return (matches && matches[0]) || "nooooo"
+    return (matches && matches[1]) || "nooooo"
   }
 
   return (
@@ -84,6 +89,7 @@ const Card = ({ handleDelete, id, title: metaTitle, url }) => {
         <Image alt="" src={`${getUrlDomainName(url)}/apple-touch-icon.png`} />
       </ImageWrapper> */}
       <Heading>{title}</Heading>
+      <SubHeading>{getUrlDomainName(url)}</SubHeading>
     </Container>
   )
 }
