@@ -80,7 +80,7 @@ const Card = ({ handleDelete, id, title: metaTitle, url }) => {
 
   const getUrlDomainName = url => {
     const matches = url.match(/https:\/\/([a-z.]+)/)
-    return (matches && matches[1]) || "nooooo"
+    return (matches && matches[1]) || "-"
   }
 
   return (
