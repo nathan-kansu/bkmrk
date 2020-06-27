@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: "/bkmrk",
   siteMetadata: {
     title: `BKMRKD.`,
     description: `Bookmarks BKMRKD.`,
