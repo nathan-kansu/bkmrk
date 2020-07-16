@@ -44,8 +44,8 @@ const Card = ({ handleDelete, id, title, url }) => {
   const [isHovering, setIsHovering] = useState(false)
 
   const getUrlDomainName = url => {
-    const matches = url.match(/https:\/\/([a-z.]+)/)
-    return (matches && matches[1]) || "-"
+    const matches = url.match(/https:\/\/(www.)?([a-z-?.]+)\//)
+    return (matches && matches[2]) || ""
   }
 
   const handleClose = id => event => {
