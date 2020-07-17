@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import Heading from "./Heading"
-import Image from "./Image"
 import SubHeading from "./SubHeading"
 
 import closeIconUrl from "../../images/close.svg"
@@ -61,13 +60,10 @@ const Card = ({ handleDelete, id, title, url }) => {
       onMouseEnter={() => setIsHovering(true)}
       onMouseLeave={() => setIsHovering(false)}
     >
-      {/* <ImageWrapper> */}
-      {/* <Image alt="" src={`${getUrlDomainName(url)}/apple-touch-icon.png`} /> */}
-      {/* </ImageWrapper> */}
       <Heading>{title}</Heading>
       <SubHeading>{getUrlDomainName(url)}</SubHeading>
       <CloseBtn onClick={handleClose(id)}>
-        <img src={closeIconUrl} />
+        <img src={closeIconUrl} alt="" />
       </CloseBtn>
     </Container>
   )
