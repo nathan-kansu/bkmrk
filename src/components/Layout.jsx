@@ -12,7 +12,6 @@ import PropTypes from "prop-types"
 // import Header from "./Header"
 import Main from "./Main"
 import GlobalStyle from "../styles/global"
-import "./layout.css"
 
 const Layout = ({ children }) => {
   //   const data = useStaticQuery(graphql`
