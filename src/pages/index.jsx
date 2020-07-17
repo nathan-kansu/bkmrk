@@ -1,9 +1,22 @@
 import React, { useEffect, useState } from "react"
-
+import styled from "styled-components"
 import Layout from "../components/layout"
 import Card from "../components/Card"
 import Grid from "../components/Grid"
 import SEO from "../components/seo"
+import loader from "../images/loading.svg"
+
+const Loader = styled.img`
+  height: 150px;
+  width: 150px;
+`
+
+const LoaderContainer = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+`
 
 const IndexPage = () => {
   const [bookmarks, setBookmarks] = useState([])
@@ -37,7 +50,9 @@ const IndexPage = () => {
     return (
       <Layout>
         <SEO title="Home" />
-        <div>Loading...</div>
+        <LoaderContainer>
+          <Loader src={loader} />
+        </LoaderContainer>
       </Layout>
     )
   }
