@@ -6,22 +6,14 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Roboto`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Noto Sans JP`,
-            variants: [`400`, `700`],
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `600`, `700`],
-          },
+          `Roboto\:400,700`,
+          `Noto Sans JP\:400,700`,
+          `Open Sans\:400,600,700`,
         ],
+        display: "swap",
       },
     },
     `gatsby-plugin-react-helmet`,
